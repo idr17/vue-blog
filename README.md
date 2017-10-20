@@ -1,6 +1,6 @@
-# my-ux
+# SIMPLE BLOG USING VUE JS AND FIREBASE
 
-> A Vue.js project
+> Here is A Vue.js project + firebase. implement from tutorial and make some change of it. thanks to net ninja.
 
 ## Build Setup
 
