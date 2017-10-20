@@ -1,0 +1,8 @@
+body{
+	font-family: 'Roboto', sans-serif;
+}
+.container{
+	background-color: #f8f8f8;
+	border-left: solid 1px #ececec;
+	border-right: solid 1px #ececec;
+}

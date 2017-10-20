@@ -1,0 +1,89 @@
+<template>
+	<div v-width="'narrow'" id="show-blogs">
+		<h1>List Articles</h1>
+		<input type="text" v-model="search" style="width: 100%" placeholder="search">
+		<div v-for="article in filteredArticles" class="single-blog">
+			<h3 v-rainbow>{{ article.title | toUpperCase }}</h3>
+		</div>
+	</div>
+</template>
+
+<script>
+import searchMixin from '../mixins/searchMixin';
+
+export default {
+	data () {
+		return {
+			articles: [],
+			search: ''
+		}
+	},
+	methods: {
+
+	},
+	created() {
+		this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data) {
+			if (data.status == 200) {
+				this.articles = data.body.slice(0, 10);
+			}
+		})
+	},
+	computed: {
+
+	},
+	mixins: [searchMixin], 		// method filter filteredArticles has been used as mixins.
+	filters: {
+		/*
+		// Local filters
+		'to-uppercase': function (val) {
+			return val.toUpperCase();
+		}
+		*/
+		// or the same thing with that
+		toUpperCase (val) {
+			return val.toUpperCase();
+		}
+	},
+	directives: {
+		// Local directives
+		'rainbow': {
+			bind (el, bind, vnode) { // vue life cycle hooks. fired when bind.
+				el.style.color = '#' + Math.random().toString(16).slice(2, 8);
+			}
+		},
+		'width': {
+			bind (el, bind, vnode) { // vue life cycle hooks. fired when bind. use of binding value and arguments.
+				// bind value
+				if (bind.value == 'wide') {
+					el.style.maxWidth = '1200px';
+				} else if (bind.value == 'narrow') {
+					el.style.maxWidth = '480px';
+				}
+
+				// bind argument
+				if (bind.arg == 'dark') {
+					el.style.background = '#ccc';
+					el.style.padding = '20px;';
+				} else if (bind.arg == 'cool') {
+					el.style.background = '#f90';
+					el.style.padding = '20px;';
+				}
+			}
+		}
+	}
+}
+
+</script>
+
+<style scoped>
+#show-blogs{
+	max-width: 800px;
+	margin: 0 auto;
+}
+.single-blog{
+	padding: 20px;
+	margin: 20px 0px;
+	box-sizing: border-box;
+	background: #ececec;
+}
+</style>
