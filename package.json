@@ -1,6 +1,6 @@
 {
-  "name": "my-ux",
-  "description": "A Vue.js project",
+  "name": "vue-blog",
+  "description": "A Vue.js project + firebase",
   "version": "1.0.0",
   "author": "indera.allezz@gmail.com <indera.allezz@gmail.com>",
   "private": true,
