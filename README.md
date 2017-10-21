@@ -1,4 +1,4 @@
-# SIMPLE BLOG USING VUE JS AND FIREBASE
+# Simple Blog Using Vue Js and Firebase
 
 > Here is A Vue.js project + firebase. implement from tutorial and make some change of it. thanks to net ninja.
 
